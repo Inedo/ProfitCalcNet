@@ -28,5 +28,5 @@ jobs:
     - name: Restore PGScan - uses .config/dotnet-tools.json
       run: dotnet tool restore
     - name: Scan
-      working-directory: ./ProfitCalcNet/ProfitCalcNet/ProfiteCalcNet.Console
+      working-directory: ProfiteCalcNet.Console
       run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=RichNugetKey --consider-project-references
