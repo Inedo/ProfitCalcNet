@@ -17,19 +17,16 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: DotNet Version
-      run: dotnet --info
     - name: Add ProGet NuGet Source
       run: dotnet nuget add source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json -n ProGet
-    - name: Add ProGet NuGet Source
+    - name: Remove NuGet.org
       run: dotnet nuget remove source nuget.org
-    - name: List Sources
-      run: dotnet nuget list source
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Install PGScan
+    - name: Restore PGScan - uses .config/dotnet-tools.json
       run: dotnet tool restore
     - name: Scan
+      working-directory: ./ProfitCalcNet/ProfitCalcNet/ProfiteCalcNet.Console
       run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=RichNugetKey --consider-project-references
