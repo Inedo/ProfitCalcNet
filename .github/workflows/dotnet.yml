@@ -20,7 +20,7 @@ jobs:
     - name: DotNet Version
       run: dotnet --info
     - name: Add ProGet NuGet Source
-      run: dotnet nuget add source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json --username api --passsword RichNugetKey
+      run: dotnet nuget add source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json
     - name: List Sources
       run: dotnet nuget list source
     - name: Restore dependencies
