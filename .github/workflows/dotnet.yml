@@ -22,6 +22,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Install PGScan
-      run: dotnet tool install pgscan --add-source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json
+      run: dotnet tool install -d pgscan --add-source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json
     - name: Scan
       run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=RichNugetKey --consider-project-references
