@@ -20,14 +20,16 @@ jobs:
     - name: DotNet Version
       run: dotnet --info
     - name: Add ProGet NuGet Source
-      run: dotnet nuget add source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json
+      run: dotnet nuget add source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json -n ProGet
+    - name: Add ProGet NuGet Source
+      run: dotnet nuget remove source nuget.org
     - name: List Sources
       run: dotnet nuget list source
     - name: Restore dependencies
-      run: dotnet restore --source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json 
+      run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Install PGScan
-      run: dotnet tool install pgscan --add-source https://proget.inedo.com/nuget/NuGetLibraries/v3/index.json
+      run: dotnet tool install pgscan
     - name: Scan
       run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=RichNugetKey --consider-project-references
