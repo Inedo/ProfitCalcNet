@@ -31,6 +31,4 @@ jobs:
       run: dotnet tool install pgscan
     - name: Scan
       working-directory: ProfiteCalcNet.Console
-      with: # Set the secret as an input
-         api_secret: ${{ secrets.PROGETAPIKEY }}
-      run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=$api_secret --consider-project-references
+      run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=${{ secrets.PROGETAPIKEY }} --consider-project-references
