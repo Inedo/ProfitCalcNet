@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -29,7 +29,6 @@ jobs:
       run: dotnet new tool-manifest
     - name: Install PGScan - uses .config/dotnet-tools.json
       run: dotnet tool install pgscan
-      #run: dotnet tool restore
     - name: Scan
       working-directory: ProfiteCalcNet.Console
       run: dotnet tool run pgscan identify --type=nuget --input=ProfiteCalcNet.Console.csproj --project-name=ProfitCalcNetConsole --version=1.0.0 --project-type=application --proget-url=https://proget.inedo.com --api-key=RichNugetKey --consider-project-references
