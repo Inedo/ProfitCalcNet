@@ -25,7 +25,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Restore PGScan - uses .config/dotnet-tools.json
+    - name: Create dotnet tool manifest (should only run this if no manifest exists)
+      run: dotnet new tool-manifest
+    - name: Install PGScan - uses .config/dotnet-tools.json
       run: dotnet tool install pgscan
       #run: dotnet tool restore
     - name: Scan
