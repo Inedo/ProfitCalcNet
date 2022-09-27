@@ -10,7 +10,7 @@ pipeline {
 
             post {
                 success {
-                    archiveArtifacts 'bin/Debug/net6.0/*.*'
+                    archiveArtifacts 'ProfiteCalcNet.Console/bin/Debug/net6.0/*.*'
                 }
             }
         }
