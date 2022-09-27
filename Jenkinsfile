@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '''cd ProfitCalcNet.Console
+                sh '''cd ProfiteCalcNet.Console
                 dotnet build'''
             }
 
