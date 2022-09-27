@@ -13,8 +13,8 @@ if (args.Length == 2)
 
 if (revenue == null || expenses == null)
 {
-    revenue = PromptDecimal("Enter revenue: ");
-    expenses = PromptDecimal("Enter expenses: ");
+    revenue = PromptDecimal("Enter all revenue: ");
+    expenses = PromptDecimal("Enter all expenses: ");
 }
 
 decimal profit = new AccountingCalculator().CalculateNet(revenue.Value, expenses.Value);
